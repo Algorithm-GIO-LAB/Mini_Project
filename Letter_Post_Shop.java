@@ -37,9 +37,8 @@ public class LetterPostShop extends javax.swing.JFrame {
         txtWeightPost = new javax.swing.JTextField();
         btnClear = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
-        txtResult = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Letter Post Shop");
@@ -109,17 +108,9 @@ public class LetterPostShop extends javax.swing.JFrame {
             }
         });
 
-        txtResult.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtResultActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("FC Iconic", 0, 24)); // NOI18N
-        jLabel1.setText("ราคา ค่าจัดส่ง");
-
-        jLabel4.setFont(new java.awt.Font("FC Iconic", 0, 24)); // NOI18N
-        jLabel4.setText("บาท");
+        txtArea.setColumns(20);
+        txtArea.setRows(5);
+        jScrollPane1.setViewportView(txtArea);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -135,7 +126,8 @@ public class LetterPostShop extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(rbtnRegis)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rbtnEms))
+                        .addComponent(rbtnEms)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
@@ -145,20 +137,16 @@ public class LetterPostShop extends javax.swing.JFrame {
                                 .addGap(0, 3, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(btnClear)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnExit))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtResult, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(btnClear)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnExit)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnCalculate)
-                            .addComponent(jLabel4))))
+                        .addComponent(btnCalculate)))
                 .addContainerGap(46, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(149, 149, 149)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,15 +163,12 @@ public class LetterPostShop extends javax.swing.JFrame {
                     .addComponent(txtWeightPost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCalculate))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtResult, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel4))
-                .addGap(56, 56, 56)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnClear)
                     .addComponent(btnExit))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -226,83 +211,394 @@ public class LetterPostShop extends javax.swing.JFrame {
         if (rbtnNormal.isSelected()) {
             if (weight < 21) {
                 price = "3";
-                txtResult.setText(price);
+                txtArea.setText("ราคาค่าจัดส่ง : "+price+" บาท");
                 
             }
             else if (weight > 20 && weight < 101) {
                 price = "5";
-                txtResult.setText(price);
+                txtArea.setText("ราคาค่าจัดส่ง : "+price+" บาท");
             }
             else if (weight > 100 && weight < 251) {
                 price = "9";
-                txtResult.setText(price);
+                txtArea.setText("ราคาค่าจัดส่ง : "+price+" บาท");
             }
             else if (weight > 250 && weight < 501) {
                 price = "15";
-                txtResult.setText(price);
+                txtArea.setText("ราคาค่าจัดส่ง : "+price+" บาท");
             }
             else if (weight > 500 && weight < 1001) {
                 price = "25";
-                txtResult.setText(price);
+                txtArea.setText("ราคาค่าจัดส่ง : "+price+" บาท");
             }
             else {
                 price = "45";
-                txtResult.setText(price);
+                txtArea.setText("ราคาค่าจัดส่ง : "+price+" บาท");
             }
         }
+
+    public LetterPostShop(javax.swing.JButton btnCalculate, javax.swing.JButton btnClear, javax.swing.JButton btnExit, javax.swing.ButtonGroup buttonGroup1, javax.swing.ButtonGroup buttonGroup2, javax.swing.ButtonGroup buttonGroup3, javax.swing.ButtonGroup buttonGroup4, javax.swing.ButtonGroup buttonGroup5, javax.swing.ButtonGroup buttonGroup6, javax.swing.ButtonGroup buttonGroup7, javax.swing.JLabel jLabel2, javax.swing.JLabel jLabel3, javax.swing.JPanel jPanel1, javax.swing.JScrollPane jScrollPane1, javax.swing.JRadioButton rbtnEms, javax.swing.JRadioButton rbtnNormal, javax.swing.JRadioButton rbtnRegis, javax.swing.JTextArea txtArea, javax.swing.JTextField txtWeightPost) {
+        this.btnCalculate = btnCalculate;
+        this.btnClear = btnClear;
+        this.btnExit = btnExit;
+        this.buttonGroup1 = buttonGroup1;
+        this.buttonGroup2 = buttonGroup2;
+        this.buttonGroup3 = buttonGroup3;
+        this.buttonGroup4 = buttonGroup4;
+        this.buttonGroup5 = buttonGroup5;
+        this.buttonGroup6 = buttonGroup6;
+        this.buttonGroup7 = buttonGroup7;
+        this.jLabel2 = jLabel2;
+        this.jLabel3 = jLabel3;
+        this.jPanel1 = jPanel1;
+        this.jScrollPane1 = jScrollPane1;
+        this.rbtnEms = rbtnEms;
+        this.rbtnNormal = rbtnNormal;
+        this.rbtnRegis = rbtnRegis;
+        this.txtArea = txtArea;
+        this.txtWeightPost = txtWeightPost;
+    }
+
+    public javax.swing.JButton getBtnCalculate() {
+        return this.btnCalculate;
+    }
+
+    public void setBtnCalculate(javax.swing.JButton btnCalculate) {
+        this.btnCalculate = btnCalculate;
+    }
+
+    public javax.swing.JButton getBtnClear() {
+        return this.btnClear;
+    }
+
+    public void setBtnClear(javax.swing.JButton btnClear) {
+        this.btnClear = btnClear;
+    }
+
+    public javax.swing.JButton getBtnExit() {
+        return this.btnExit;
+    }
+
+    public void setBtnExit(javax.swing.JButton btnExit) {
+        this.btnExit = btnExit;
+    }
+
+    public javax.swing.ButtonGroup getButtonGroup1() {
+        return this.buttonGroup1;
+    }
+
+    public void setButtonGroup1(javax.swing.ButtonGroup buttonGroup1) {
+        this.buttonGroup1 = buttonGroup1;
+    }
+
+    public javax.swing.ButtonGroup getButtonGroup2() {
+        return this.buttonGroup2;
+    }
+
+    public void setButtonGroup2(javax.swing.ButtonGroup buttonGroup2) {
+        this.buttonGroup2 = buttonGroup2;
+    }
+
+    public javax.swing.ButtonGroup getButtonGroup3() {
+        return this.buttonGroup3;
+    }
+
+    public void setButtonGroup3(javax.swing.ButtonGroup buttonGroup3) {
+        this.buttonGroup3 = buttonGroup3;
+    }
+
+    public javax.swing.ButtonGroup getButtonGroup4() {
+        return this.buttonGroup4;
+    }
+
+    public void setButtonGroup4(javax.swing.ButtonGroup buttonGroup4) {
+        this.buttonGroup4 = buttonGroup4;
+    }
+
+    public javax.swing.ButtonGroup getButtonGroup5() {
+        return this.buttonGroup5;
+    }
+
+    public void setButtonGroup5(javax.swing.ButtonGroup buttonGroup5) {
+        this.buttonGroup5 = buttonGroup5;
+    }
+
+    public javax.swing.ButtonGroup getButtonGroup6() {
+        return this.buttonGroup6;
+    }
+
+    public void setButtonGroup6(javax.swing.ButtonGroup buttonGroup6) {
+        this.buttonGroup6 = buttonGroup6;
+    }
+
+    public javax.swing.ButtonGroup getButtonGroup7() {
+        return this.buttonGroup7;
+    }
+
+    public void setButtonGroup7(javax.swing.ButtonGroup buttonGroup7) {
+        this.buttonGroup7 = buttonGroup7;
+    }
+
+    public javax.swing.JLabel getJLabel2() {
+        return this.jLabel2;
+    }
+
+    public void setJLabel2(javax.swing.JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public javax.swing.JLabel getJLabel3() {
+        return this.jLabel3;
+    }
+
+    public void setJLabel3(javax.swing.JLabel jLabel3) {
+        this.jLabel3 = jLabel3;
+    }
+
+    public javax.swing.JPanel getJPanel1() {
+        return this.jPanel1;
+    }
+
+    public void setJPanel1(javax.swing.JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public javax.swing.JScrollPane getJScrollPane1() {
+        return this.jScrollPane1;
+    }
+
+    public void setJScrollPane1(javax.swing.JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public javax.swing.JRadioButton getRbtnEms() {
+        return this.rbtnEms;
+    }
+
+    public void setRbtnEms(javax.swing.JRadioButton rbtnEms) {
+        this.rbtnEms = rbtnEms;
+    }
+
+    public javax.swing.JRadioButton getRbtnNormal() {
+        return this.rbtnNormal;
+    }
+
+    public void setRbtnNormal(javax.swing.JRadioButton rbtnNormal) {
+        this.rbtnNormal = rbtnNormal;
+    }
+
+    public javax.swing.JRadioButton getRbtnRegis() {
+        return this.rbtnRegis;
+    }
+
+    public void setRbtnRegis(javax.swing.JRadioButton rbtnRegis) {
+        this.rbtnRegis = rbtnRegis;
+    }
+
+    public javax.swing.JTextArea getTxtArea() {
+        return this.txtArea;
+    }
+
+    public void setTxtArea(javax.swing.JTextArea txtArea) {
+        this.txtArea = txtArea;
+    }
+
+    public javax.swing.JTextField getTxtWeightPost() {
+        return this.txtWeightPost;
+    }
+
+    public void setTxtWeightPost(javax.swing.JTextField txtWeightPost) {
+        this.txtWeightPost = txtWeightPost;
+    }
+
+    public LetterPostShop btnCalculate(javax.swing.JButton btnCalculate) {
+        setBtnCalculate(btnCalculate);
+        return this;
+    }
+
+    public LetterPostShop btnClear(javax.swing.JButton btnClear) {
+        setBtnClear(btnClear);
+        return this;
+    }
+
+    public LetterPostShop btnExit(javax.swing.JButton btnExit) {
+        setBtnExit(btnExit);
+        return this;
+    }
+
+    public LetterPostShop buttonGroup1(javax.swing.ButtonGroup buttonGroup1) {
+        setButtonGroup1(buttonGroup1);
+        return this;
+    }
+
+    public LetterPostShop buttonGroup2(javax.swing.ButtonGroup buttonGroup2) {
+        setButtonGroup2(buttonGroup2);
+        return this;
+    }
+
+    public LetterPostShop buttonGroup3(javax.swing.ButtonGroup buttonGroup3) {
+        setButtonGroup3(buttonGroup3);
+        return this;
+    }
+
+    public LetterPostShop buttonGroup4(javax.swing.ButtonGroup buttonGroup4) {
+        setButtonGroup4(buttonGroup4);
+        return this;
+    }
+
+    public LetterPostShop buttonGroup5(javax.swing.ButtonGroup buttonGroup5) {
+        setButtonGroup5(buttonGroup5);
+        return this;
+    }
+
+    public LetterPostShop buttonGroup6(javax.swing.ButtonGroup buttonGroup6) {
+        setButtonGroup6(buttonGroup6);
+        return this;
+    }
+
+    public LetterPostShop buttonGroup7(javax.swing.ButtonGroup buttonGroup7) {
+        setButtonGroup7(buttonGroup7);
+        return this;
+    }
+
+    public LetterPostShop jLabel2(javax.swing.JLabel jLabel2) {
+        setJLabel2(jLabel2);
+        return this;
+    }
+
+    public LetterPostShop jLabel3(javax.swing.JLabel jLabel3) {
+        setJLabel3(jLabel3);
+        return this;
+    }
+
+    public LetterPostShop jPanel1(javax.swing.JPanel jPanel1) {
+        setJPanel1(jPanel1);
+        return this;
+    }
+
+    public LetterPostShop jScrollPane1(javax.swing.JScrollPane jScrollPane1) {
+        setJScrollPane1(jScrollPane1);
+        return this;
+    }
+
+    public LetterPostShop rbtnEms(javax.swing.JRadioButton rbtnEms) {
+        setRbtnEms(rbtnEms);
+        return this;
+    }
+
+    public LetterPostShop rbtnNormal(javax.swing.JRadioButton rbtnNormal) {
+        setRbtnNormal(rbtnNormal);
+        return this;
+    }
+
+    public LetterPostShop rbtnRegis(javax.swing.JRadioButton rbtnRegis) {
+        setRbtnRegis(rbtnRegis);
+        return this;
+    }
+
+    public LetterPostShop txtArea(javax.swing.JTextArea txtArea) {
+        setTxtArea(txtArea);
+        return this;
+    }
+
+    public LetterPostShop txtWeightPost(javax.swing.JTextField txtWeightPost) {
+        setTxtWeightPost(txtWeightPost);
+        return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof LetterPostShop)) {
+            return false;
+        }
+        LetterPostShop letterPostShop = (LetterPostShop) o;
+        return Objects.equals(btnCalculate, letterPostShop.btnCalculate) && Objects.equals(btnClear, letterPostShop.btnClear) && Objects.equals(btnExit, letterPostShop.btnExit) && Objects.equals(buttonGroup1, letterPostShop.buttonGroup1) && Objects.equals(buttonGroup2, letterPostShop.buttonGroup2) && Objects.equals(buttonGroup3, letterPostShop.buttonGroup3) && Objects.equals(buttonGroup4, letterPostShop.buttonGroup4) && Objects.equals(buttonGroup5, letterPostShop.buttonGroup5) && Objects.equals(buttonGroup6, letterPostShop.buttonGroup6) && Objects.equals(buttonGroup7, letterPostShop.buttonGroup7) && Objects.equals(jLabel2, letterPostShop.jLabel2) && Objects.equals(jLabel3, letterPostShop.jLabel3) && Objects.equals(jPanel1, letterPostShop.jPanel1) && Objects.equals(jScrollPane1, letterPostShop.jScrollPane1) && Objects.equals(rbtnEms, letterPostShop.rbtnEms) && Objects.equals(rbtnNormal, letterPostShop.rbtnNormal) && Objects.equals(rbtnRegis, letterPostShop.rbtnRegis) && Objects.equals(txtArea, letterPostShop.txtArea) && Objects.equals(txtWeightPost, letterPostShop.txtWeightPost);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(btnCalculate, btnClear, btnExit, buttonGroup1, buttonGroup2, buttonGroup3, buttonGroup4, buttonGroup5, buttonGroup6, buttonGroup7, jLabel2, jLabel3, jPanel1, jScrollPane1, rbtnEms, rbtnNormal, rbtnRegis, txtArea, txtWeightPost);
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " btnCalculate='" + getBtnCalculate() + "'" +
+            ", btnClear='" + getBtnClear() + "'" +
+            ", btnExit='" + getBtnExit() + "'" +
+            ", buttonGroup1='" + getButtonGroup1() + "'" +
+            ", buttonGroup2='" + getButtonGroup2() + "'" +
+            ", buttonGroup3='" + getButtonGroup3() + "'" +
+            ", buttonGroup4='" + getButtonGroup4() + "'" +
+            ", buttonGroup5='" + getButtonGroup5() + "'" +
+            ", buttonGroup6='" + getButtonGroup6() + "'" +
+            ", buttonGroup7='" + getButtonGroup7() + "'" +
+            ", jLabel2='" + getJLabel2() + "'" +
+            ", jLabel3='" + getJLabel3() + "'" +
+            ", jPanel1='" + getJPanel1() + "'" +
+            ", jScrollPane1='" + getJScrollPane1() + "'" +
+            ", rbtnEms='" + getRbtnEms() + "'" +
+            ", rbtnNormal='" + getRbtnNormal() + "'" +
+            ", rbtnRegis='" + getRbtnRegis() + "'" +
+            ", txtArea='" + getTxtArea() + "'" +
+            ", txtWeightPost='" + getTxtWeightPost() + "'" +
+            "}";
+    }
         
         else if (rbtnRegis.isSelected()) {
             if (weight < 21) {
                 price = "16";
-                txtResult.setText(price);
+                txtArea.setText("ราคาค่าจัดส่ง : "+price+" บาท");
                 
             }
             else if (weight > 20 && weight < 101) {
                 price = "18";
-                txtResult.setText(price);
+                txtArea.setText("ราคาค่าจัดส่ง : "+price+" บาท");
             }
             else if (weight > 100 && weight < 251) {
                 price = "22";
-                txtResult.setText(price);
+                txtArea.setText("ราคาค่าจัดส่ง : "+price+" บาท");
             }
             else if (weight > 250 && weight < 501) {
                 price = "28";
-                txtResult.setText(price);
+                txtArea.setText("ราคาค่าจัดส่ง : "+price+" บาท");
             }
             else if (weight > 500 && weight < 1001) {
                 price = "38";
-                txtResult.setText(price);
+                txtArea.setText("ราคาค่าจัดส่ง : "+price+" บาท");
             }
             else {
                 price = "58";
-                txtResult.setText(price);
+                txtArea.setText("ราคาค่าจัดส่ง : "+price+" บาท");
             }
         }
-        
+
         else if (rbtnEms.isSelected()) {
             if (weight < 21) {
                 price = "27";
-                txtResult.setText(price);
+                
+                txtArea.setText("ราคาค่าจัดส่ง : "+price+" บาท");
             }
             else if (weight > 20 && weight < 101) {
                 price = "32";
-                txtResult.setText(price);
+                txtArea.setText("ราคาค่าจัดส่ง : "+price+" บาท");
             }
             else if (weight > 100 && weight < 251) {
                 price = "37";
-                txtResult.setText(price);
+                txtArea.setText("ราคาค่าจัดส่ง : "+price+" บาท");
             }
             else if (weight > 250 && weight < 501) {
                 price = "47";
-                txtResult.setText(price);
+                txtArea.setText("ราคาค่าจัดส่ง : "+price+" บาท");
             }
             else if (weight > 500 && weight < 1001) {
                 price = "62";
-                txtResult.setText(price);
+                txtArea.setText("ราคาค่าจัดส่ง : "+price+" บาท");
             }
             else {
                 price = "77";
-                txtResult.setText(price);
+                txtArea.setText("ราคาค่าจัดส่ง : "+price+" บาท");
             }
         }
 
@@ -314,7 +610,7 @@ public class LetterPostShop extends javax.swing.JFrame {
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {                                         
         txtWeightPost.setText("");
-        txtResult.setText("");
+        txtArea.setText("");
     }                                        
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {                                        
@@ -325,10 +621,6 @@ public class LetterPostShop extends javax.swing.JFrame {
         }
         
     }                                       
-
-    private void txtResultActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        // TODO add your handling code here:
-    }                                         
 
     /**
      * @param args the command line arguments
@@ -376,15 +668,14 @@ public class LetterPostShop extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup5;
     private javax.swing.ButtonGroup buttonGroup6;
     private javax.swing.ButtonGroup buttonGroup7;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JRadioButton rbtnEms;
     private javax.swing.JRadioButton rbtnNormal;
     private javax.swing.JRadioButton rbtnRegis;
-    private javax.swing.JTextField txtResult;
+    private javax.swing.JTextArea txtArea;
     private javax.swing.JTextField txtWeightPost;
     // End of variables declaration                   
 }
